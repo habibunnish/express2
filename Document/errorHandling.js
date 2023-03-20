@@ -3,6 +3,23 @@ const app=express();
 const port=4001;
 const fs=require('fs');
 
+//Validateco0kies example
+const cookieParser=require('cookie-parser');
+const cookieValidator=require('./cookieValidator')
+
+async function validateCookies(req,res,next){
+    await cookieValidator(req.cookies)
+    next()
+}
+app.use(cookieParser());
+app.use(validateCookies)
+
+app.use((err,req,res,next)=>{
+    res.status(400).send(err.message)
+})
+
+
+
 app.get('/',(req,res)=>{
     throw new Error('BROKEN');  //EXPRESS WILL CATCH THIS ON ITS OWN
 });
@@ -72,6 +89,7 @@ app.get('/',(req,res,next)=>{
         }
     })
 })
+
 
 app.listen(port,()=>{
     console.log(`error handling file listening on http://localhost:${port}`);
