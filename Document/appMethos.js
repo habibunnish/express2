@@ -48,6 +48,21 @@ app.engine('html',engines.hogan);
 app.set('title','my site');
 app.get('title');
 
+
+//param
+app.param('user',(req,res,next,id)=>{
+    URLSearchParams.find(id,(err,user)=>{
+        if(err){
+            next(err)
+        }else if(user){
+            req.user=user
+            next()
+        }else{
+            next(new Error('failed to load user'));
+        }
+    })
+})
+
 app.listen(port,()=>{
     console.log(`listen on http://localhost:${port}`);
 });
