@@ -85,6 +85,28 @@ res.redirect('/foo/bar');
 res.redirect('../login');
 
 
+//res.redirect([status,path])
+res.redirect(301,'http://localhost:3001');
+res.redirect('../pagename');
+
+//res.render(view,[locals],[callback])
+/**send the rendered view to the client */
+res.render('index');
+
+/**if a callback is specified the rendered html string has to be sent explicitly */
+res.render('index',(err,html)=>{
+    res.send(html);
+});
+
+/**if u want to passa local variable to the view */
+res.render('user',{name:'tobi'},(err,html)=>{
+    res.send(html);
+});
+
+//res.sendfile(path,[option],[fn])
+
+
+
 app.listen(port,()=>{
     console.log(`listen http://localhost:${port}`);
 });

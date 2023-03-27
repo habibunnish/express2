@@ -6,6 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "@godaddy/terminus": "^4.11.2",
     "body-parser": "^1.20.2",
     "compression": "^1.7.4",
     "consolidate": "^0.16.0",

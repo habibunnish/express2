@@ -3,6 +3,7 @@ const app=express();
 const port=8001;
 const path=require('path');
 
+
 /*express specific stuff*/
 app.use('/static',express.static('static'));
 
@@ -14,8 +15,6 @@ app.set('view engine','pug');
 //set view directory
 app.set('views',path.join(__dirname,'views'));
 
-
-
 /*our pug demo endpoint*/
 app.get('/demopug', (req, res) => {
   res.status(200).render('demo', { title: 'Hey all', message: 'Hello there using pug !' })
@@ -25,6 +24,7 @@ app.get('/',(req,res)=>{
   const params={'title ':'this is a express pug title','content':cont}
   res.status(200).render('index',params);
 })
+
 
 
 // app.get('/',(req,res)=>{

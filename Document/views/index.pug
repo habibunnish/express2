@@ -23,8 +23,11 @@
              | #{content}
              | <!-- THIS IS A PLAIN HTML USING PUG -->
              </p>
-             <form action="/" id="conatct">
+             <form action="/uploadfile" method='post' enctype="multipart/form-data" id="conatct">
               
+                <div class='form-group'>
+                    <input type="file" name='file' required id=""  class="form-control">
+                </div>
                 <input type="text" name="name" id="name" placeholder="Your name">
               
                 <input type="text" name="age" id="age" placeholder="Your age">
